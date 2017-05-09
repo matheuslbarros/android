@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">App aula 2</string>
+
+    <string name="login.heading">Login</string>
+    <string name="login.email">Email</string>
+    <string name="login.button">Login</string>
+</resources>

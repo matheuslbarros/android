@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sala01.application3.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_search"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/linearLayout"
+            android:layout_weight="0.96"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Search..."
+            android:textColor="#ffffff"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/linearLayout"
+            app:srcCompat="@android:drawable/ic_media_play" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linearLayout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/f3c66956ff00975c1c382e4fcdc38a7d" />
+
+            <LinearLayout
+                android:id="@+id/layoutFoto"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/background"
+                android:layout_marginTop="-30dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/rowan_atkinson" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="Mister bin"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutBotoes"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/layoutFoto"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="#fff"
+                    android:contentDescription="New Post"
+                    app:srcCompat="@android:drawable/ic_menu_edit" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="#fff"
+                    android:contentDescription="Update Info"
+                    app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="#fff"
+                    android:contentDescription="Activity Log"
+                    app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="#fff"
+                    android:contentDescription="More"
+                    app:srcCompat="@android:drawable/ic_menu_more" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutBotoes"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textDescricao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Designer, Hacker, and Adventurer. Always in search ofthe next sun and moon."/>
+
+                <TextView
+                    android:id="@+id/buttonEditar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorLink"
+                    android:clickable="true"
+                    android:textAlignment="center"
+                    android:text="Edit"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearDescricao"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/imageButton5"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="#fff"
+                        android:contentDescription="Work"
+                        app:srcCompat="@android:drawable/ic_menu_compass" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Works at facebook" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/imageButton6"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="#fff"
+                        app:srcCompat="@android:drawable/ic_menu_mapmode" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Lives in San Francisco, California" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="#fff">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Material.Widget.IconMenu.Item"
+            android:text="News" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@android:style/TextAppearance.Material.Widget.IconMenu.Item"
+            android:text="Requests"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@android:style/TextAppearance.Material.Widget.IconMenu.Item"
+            android:text="Messenger"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@android:style/TextAppearance.Material.Widget.IconMenu.Item"
+            android:text="Notifications"/>
+        <!--
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@android:style/TextAppearance.Material.Widget.IconMenu.Item"
+            android:text="More"/>
+        -->
+    </LinearLayout>
+</RelativeLayout>

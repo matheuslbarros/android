@@ -20,7 +20,7 @@ public class DescriptionActivity extends AppCompatActivity {
 
         Intent output = new Intent();
         output.putExtra("descricao", editDescricao.getText().toString());
-        setResult(RESULT_OK, output);
+        setResult(MainActivity.EDIT_DESCRIPTION, output);
         finish();
     }
 }

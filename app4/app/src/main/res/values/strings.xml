@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Application 4</string>
+
+    <string name="ok">Sim</string>
+    <string name="cancel">Não</string>
+
+    <string name="dialog_confirm_message">Deseja fechar a aplicação?</string>
+
+    <string name="dialog_list_message">Escolha uma fruta</string>
+    <string name="dialog_list_choose_message">Você selecionou a fruta</string>
+    <string-array name="dialog_list_options">
+        <item name="pera">Pera</item>
+        <item name="uva">Uva</item>
+        <item name="maca">Maça</item>
+        <item name="saladamista">Salada mista</item>
+    </string-array>
+</resources>

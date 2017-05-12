@@ -1,9 +1,12 @@
 package com.example.sala01.gugolquipe;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -42,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
         adapter = new NotesAdapter(this, notes);
         ListView listView = (ListView) findViewById(R.id.notes);
         listView.setAdapter(adapter);
+    }
+
+    public void editar(View view) {
+        Toast.makeText(getApplicationContext(), "Teste", 4).show();
+
+        Intent intent = new Intent(MainActivity.this, NoteEditActivity.class);
+        startActivity(intent);
     }
 
     private void fetchPosts() {

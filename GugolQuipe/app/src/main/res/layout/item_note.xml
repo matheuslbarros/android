@@ -6,7 +6,8 @@
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title" />
+        android:text="Title"
+        android:onClick="editar"/>
     <TextView
         android:id="@+id/textDescription"
         android:layout_width="wrap_content"

@@ -13,34 +13,41 @@ import java.util.ArrayList;
 
 public class PostAdapter extends ArrayAdapter<Post> {
 
+    private ViewHolder viewHolder;
+
+    class ViewHolder {
+        TextView userName, local, description;
+        ImageView userPhoto, photo;
+    }
+
     public PostAdapter(Context context, ArrayList<Post> posts) {
         super(context, 0, posts);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Post post = getItem(position);
-
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_item, parent, false);
+
+            viewHolder = new ViewHolder();
+            viewHolder.userName = (TextView) convertView.findViewById(R.id.textUserName);
+            viewHolder.local = (TextView) convertView.findViewById(R.id.textLocal);
+            viewHolder.description = (TextView) convertView.findViewById(R.id.textDescription);
+            viewHolder.userPhoto = (ImageView) convertView.findViewById(R.id.imageUserPhoto);
+            viewHolder.photo = (ImageView) convertView.findViewById(R.id.imagePhoto);
         }
 
-        TextView textUserName = (TextView) convertView.findViewById(R.id.textUserName);
-        ImageView imageUserPhoto = (ImageView) convertView.findViewById(R.id.imageUserPhoto);
+        Post post = getItem(position);
 
-        TextView textLocal = (TextView) convertView.findViewById(R.id.textLocal);
-        TextView textDescription = (TextView) convertView.findViewById(R.id.textDescription);
-        ImageView imagePhoto = (ImageView) convertView.findViewById(R.id.imagePhoto);
+        viewHolder.userName.setText(post.getUser().getName());
+        viewHolder.userPhoto.setTag(post.getUser().getPhoto());
 
-        textUserName.setText(post.getUser().getName());
-        imageUserPhoto.setTag(post.getUser().getPhoto());
+        viewHolder.local.setText(post.getLocal());
+        viewHolder.description.setText(post.getDescription());
+        viewHolder.photo.setTag(post.getPhoto());
 
-        textLocal.setText(post.getLocal());
-        textDescription.setText(post.getDescription());
-        imagePhoto.setTag(post.getPhoto());
-
-        new ImageDownload().execute(imagePhoto);
-        new ImageDownload().execute(imageUserPhoto);
+        new ImageDownload().execute(viewHolder.photo);
+        new ImageDownload().execute(viewHolder.userPhoto);
 
         return convertView;
     }

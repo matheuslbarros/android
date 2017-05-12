@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heading"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/imageUsuario"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="4dp">
+
+            <ImageView
+                android:id="@+id/imageUserPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/rowan_atkinson" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NomeDoUsuario"
+            android:layout_toRightOf="@+id/imageUsuario"
+            android:layout_toLeftOf="@+id/buttonMais" />
+
+        <TextView
+            android:id="@+id/textLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imageUsuario"
+            android:layout_toLeftOf="@+id/buttonMais"
+            android:layout_below="@+id/textUserName"
+            android:text="NomeDoLocal"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+        <ImageButton
+            android:id="@+id/buttonMais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:srcCompat="@android:drawable/ic_menu_more"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/heading">
+
+        <ImageView
+            android:id="@+id/imagePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/f3c66956ff00975c1c382e4fcdc38a7d" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/body"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/buttonLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:srcCompat="@android:drawable/btn_star"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp" />
+
+        <ImageButton
+            android:id="@+id/buttonComentario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/buttonLike"
+            android:layout_toEndOf="@+id/buttonLike"
+            android:layout_toRightOf="@+id/buttonLike"
+            android:background="#fff"
+            app:srcCompat="@android:drawable/ic_menu_mylocation"
+            android:layout_marginRight="2dp"/>
+
+        <ImageButton
+            android:id="@+id/buttonMensagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/buttonComentario"
+            android:layout_toEndOf="@+id/buttonComentario"
+            android:layout_toRightOf="@+id/buttonComentario"
+            android:background="#fff"
+            app:srcCompat="@android:drawable/ic_menu_send"
+            android:layout_marginRight="2dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/footer"
+        android:layout_margin="4dp"
+        android:text="Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos."/>
+
+</RelativeLayout>

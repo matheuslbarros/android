@@ -10,16 +10,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends BaseActivity {
 
-    private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
 
     private EditText mEmailField;
@@ -30,8 +26,6 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // FirebaseApp.initializeApp(this.getApplicationContext());
-        // mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
         mEmailField = (EditText) findViewById(R.id.editEmail);
@@ -41,6 +35,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         if (mAuth.getCurrentUser() != null) {
             onAuthSuccess(mAuth.getCurrentUser());
         }
@@ -86,7 +81,7 @@ public class LoginActivity extends BaseActivity {
         // writeNewUser(user.getUid(), username, user.getEmail());
 
         // Go to MainActivity
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, NoteListActivity.class));
         finish();
     }
 }

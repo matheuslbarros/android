@@ -32,6 +32,7 @@ public class MainActivity extends FragmentActivity {
         FragmentoDois fragmentoDois = new FragmentoDois();
         fragmentoDois.setArguments(getIntent().getExtras());
 
+        transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragmentoDois);
         transaction.addToBackStack(null);
         transaction.commit();

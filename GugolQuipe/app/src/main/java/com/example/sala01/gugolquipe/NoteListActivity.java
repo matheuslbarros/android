@@ -59,6 +59,11 @@ public class NoteListActivity extends BaseActivity {
         });
     }
 
+    public void novo(View view) {
+        Intent intent = new Intent(this, NoteEditActivity.class);
+        startActivity(intent);
+    }
+
     public void editar(String id) {
         Intent intent = new Intent(this, NoteEditActivity.class);
         intent.putExtra(NoteEditActivity.EXTRA_NOTE_KEY, id);

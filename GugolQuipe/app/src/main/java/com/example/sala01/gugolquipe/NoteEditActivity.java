@@ -13,11 +13,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class NoteEditActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NOTE_KEY = "post_key";
+    public static final String EXTRA_NOTE_KEY = "note_key";
 
     private DatabaseReference NoteReference;
 
     private ViewHolder viewHolder;
+
+    private String noteKey;
 
     class ViewHolder {
         EditText title, description;
@@ -28,30 +30,30 @@ public class NoteEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_edit);
 
-        String noteKey = getIntent().getStringExtra(EXTRA_NOTE_KEY);
-        if (noteKey == null) {
-            throw new IllegalArgumentException("Must pass EXTRA_NOTE_KEY");
-        }
-
         viewHolder = new ViewHolder();
         viewHolder.title = (EditText) findViewById(R.id.editTitle);
         viewHolder.description = (EditText) findViewById(R.id.editDescription);
 
-        NoteReference = FirebaseDatabase.getInstance().getReference().child("notes").child(noteKey);
-        NoteReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Note note = dataSnapshot.getValue(Note.class);
+        noteKey = getIntent().getStringExtra(EXTRA_NOTE_KEY);
+        if (noteKey == null) {
+            NoteReference = FirebaseDatabase.getInstance().getReference().child("notes").push();
+        } else {
+            NoteReference = FirebaseDatabase.getInstance().getReference().child("notes").child(noteKey);
+            NoteReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Note note = dataSnapshot.getValue(Note.class);
 
-                viewHolder.title.setText(note.getTitle());
-                viewHolder.description.setText(note.getDescription());
-            }
+                    viewHolder.title.setText(note.getTitle());
+                    viewHolder.description.setText(note.getDescription());
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
     public void salvar(View view) {

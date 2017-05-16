@@ -37,8 +37,8 @@ public class NotesAdapter extends ArrayAdapter<Note> {
 
         Note note = getItem(position);
 
-        viewHolder.title.setText(note.getTitle());
-        viewHolder.description.setText(note.getDescription());
+        viewHolder.title.setText(note.title);
+        viewHolder.description.setText(note.description);
 
         return convertView;
     }

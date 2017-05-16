@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class NoteEditActivity extends AppCompatActivity {
+public class NoteEditActivity extends BaseActivity {
 
     public static final String EXTRA_NOTE_KEY = "note_key";
 
@@ -44,8 +44,8 @@ public class NoteEditActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Note note = dataSnapshot.getValue(Note.class);
 
-                    viewHolder.title.setText(note.getTitle());
-                    viewHolder.description.setText(note.getDescription());
+                    viewHolder.title.setText(note.title);
+                    viewHolder.description.setText(note.description);
                 }
 
                 @Override
@@ -57,8 +57,14 @@ public class NoteEditActivity extends AppCompatActivity {
     }
 
     public void salvar(View view) {
-        NoteReference.child("title").setValue(viewHolder.title.getText().toString());
-        NoteReference.child("description").setValue(viewHolder.description.getText().toString());
+        Note note = new Note();
+        note.user = getUid();
+        note.title = viewHolder.title.getText().toString();
+        note.description = viewHolder.description.getText().toString();
+        NoteReference.setValue(note.toMap());
+
+        // NoteReference.child("title").setValue(viewHolder.title.getText().toString());
+        // NoteReference.child("description").setValue(viewHolder.description.getText().toString());
         finish();
     }
 }

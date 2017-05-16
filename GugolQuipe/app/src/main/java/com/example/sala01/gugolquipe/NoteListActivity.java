@@ -35,7 +35,7 @@ public class NoteListActivity extends BaseActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot children : dataSnapshot.getChildren()) {
                     Note note = children.getValue(Note.class);
-                    note.setId(children.getKey());
+                    note.id = children.getKey();
                     adapter.add(note);
                 }
             }
@@ -53,8 +53,7 @@ public class NoteListActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Note note = (Note) parent.getItemAtPosition(position);
-
-                editar(note.getId());
+                editar(note.id);
             }
         });
     }

@@ -13,8 +13,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void abrirMapa(View view) {
-        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
+    public void openMap(View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openLocation(View view) {
+        Intent intent = new Intent(this, LocationActivity.class);
+        startActivity(intent);
+    }
+
+    public void openGPS(View view) {
+        Intent intent = new Intent(this, GooglePlayServices.class);
         startActivity(intent);
     }
 }

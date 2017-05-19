@@ -39,4 +39,14 @@
         android:layout_below="@+id/editPassword"
         android:text="Login"
         android:onClick="login"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastre-se"
+        android:layout_below="@id/buttonLogin"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:onClick="cadastrar"
+        android:textAlignment="center"/>
 </RelativeLayout>

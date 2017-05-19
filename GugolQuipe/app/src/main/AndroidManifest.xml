@@ -28,7 +28,8 @@
         <activity
             android:name=".NoteEditActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".NoteListActivity"></activity>
+        <activity android:name=".NoteListActivity" />
+        <activity android:name=".SigninActivity"></activity>
     </application>
 
 </manifest>

@@ -91,7 +91,7 @@ public class NoteListActivity extends BaseActivity {
         }
         super.onPause();
     }
-    
+
     @Override
     protected void onStop() {
         adapter.clear();

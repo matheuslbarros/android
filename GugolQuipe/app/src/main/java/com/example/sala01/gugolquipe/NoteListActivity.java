@@ -60,7 +60,6 @@ public class NoteListActivity extends BaseActivity {
             };
 
             notesReference = FirebaseDatabase.getInstance().getReference().child("notes");
-            notesReference.addValueEventListener(valueEventListener);
         }
     }
 
@@ -77,26 +76,28 @@ public class NoteListActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-        toast("resume");
-        super.onResume();
-        // adapter.notify();
-        // adapter.notifyAll();
-        // listView.deferNotifyDataSetChanged();
         adapter.notifyDataSetChanged();
-        // adapter.clear();
-
         if (notesReference != null) {
-            notesReference.removeEventListener(valueEventListener);
             notesReference.addValueEventListener(valueEventListener);
         }
+        super.onResume();
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
         adapter.clear();
         if (notesReference != null) {
             notesReference.removeEventListener(valueEventListener);
         }
+        super.onPause();
+    }
+    
+    @Override
+    protected void onStop() {
+        adapter.clear();
+        if (notesReference != null) {
+            notesReference.removeEventListener(valueEventListener);
+        }
+        super.onStop();
     }
 }

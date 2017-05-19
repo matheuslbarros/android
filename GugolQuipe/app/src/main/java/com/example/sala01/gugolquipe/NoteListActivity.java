@@ -22,46 +22,46 @@ public class NoteListActivity extends BaseActivity {
     private ValueEventListener valueEventListener;
     private DatabaseReference notesReference;
 
+    private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_list);
 
-        ArrayList<Note> notes = new ArrayList<Note>();
-        adapter = new NotesAdapter(this, notes);
-        ListView listView = (ListView) findViewById(R.id.notes);
-        listView.setAdapter(adapter);
+        if (adapter == null) {
+            adapter = new NotesAdapter(this, new ArrayList<Note>());
 
-        valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot children : dataSnapshot.getChildren()) {
-                    Note note = children.getValue(Note.class);
+            listView = (ListView) findViewById(R.id.notes);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Note note = (Note) parent.getItemAtPosition(position);
+                    editar(note.id);
+                }
+            });
 
-                    if (getUid().equals(note.user)) {
-                        note.id = children.getKey();
-                        adapter.add(note);
+            valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot children : dataSnapshot.getChildren()) {
+                        Note note = children.getValue(Note.class);
+
+                        if (getUid().equals(note.user)) {
+                            note.id = children.getKey();
+                            adapter.add(note);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {}
+            };
 
-            }
-        };
-
-        Log.i("asd", "ID: " + getUid());
-        notesReference = FirebaseDatabase.getInstance().getReference().child("notes");
-        notesReference.addValueEventListener(valueEventListener);
-        
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Note note = (Note) parent.getItemAtPosition(position);
-                editar(note.id);
-            }
-        });
+            notesReference = FirebaseDatabase.getInstance().getReference().child("notes");
+            notesReference.addValueEventListener(valueEventListener);
+        }
     }
 
     public void novo(View view) {
@@ -77,8 +77,14 @@ public class NoteListActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
+        toast("resume");
         super.onResume();
-        adapter.clear();
+        // adapter.notify();
+        // adapter.notifyAll();
+        // listView.deferNotifyDataSetChanged();
+        adapter.notifyDataSetChanged();
+        // adapter.clear();
+
         if (notesReference != null) {
             notesReference.removeEventListener(valueEventListener);
             notesReference.addValueEventListener(valueEventListener);
